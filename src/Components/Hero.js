@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
-  console.warn(process.env.REACT_APP_appId)
   return (
     <div>
       <div className="main-hero-section w-full grid lg:flex justify-between px-8 sm:px-0">
