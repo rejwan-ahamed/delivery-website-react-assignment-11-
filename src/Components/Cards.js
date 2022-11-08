@@ -8,7 +8,7 @@ const Cards = () => {
       <h1 className="font-general font-[600] text-4xl text-center mt-24">
         Our services.
       </h1>
-      <div className="grid grid-cols-3 gap-6 mt-10 mb-10 px-24">
+      <div className="flex flex-col gap-4 px-6 sm:grid sm:grid-cols-3 sm:gap-6 mt-10 mb-10 lg:px-0 xl:px-24">
         <Card></Card>
         <Card></Card>
         <Card></Card>

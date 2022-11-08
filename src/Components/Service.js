@@ -1,7 +1,7 @@
 import React from "react";
 import UseTitle from "./Title";
 const Service = () => {
-  UseTitle('Service')
+  UseTitle("Service");
   window.scroll(0, 0);
   return (
     <div>
@@ -31,18 +31,29 @@ const Service = () => {
         </div>
       </div>
       {/* comment section start here */}
-      <div className="main-comment-area lg:px-20 xl:px-40">
-        <div className="upper-part-comment-section flex gap-4">
+      <div className="main-comment-area px-6 lg:px-20 xl:px-40">
+        <div className="upper-part-comment-section block sm:flex gap-4">
           <img
             class="w-10 h-10 rounded-full"
             src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
             alt="Rounded avatar"
           />
           <form className="w-full">
-          <div>
-            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Retting</label>
-            <input type="number" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mb-4 w-[20rem]" placeholder="1 to 5" required/>
-        </div>
+            <div>
+              <label
+                for="first_name"
+                class="mt-6 sm:mt-0 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                Retting
+              </label>
+              <input
+                type="number"
+                id="first_name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block p-2.5 mb-4 w-full sm:w-[20rem]"
+                placeholder="1 to 5"
+                required
+              />
+            </div>
             <div className="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
               <div className="py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800">
                 <label for="comment" className="sr-only">
@@ -59,7 +70,7 @@ const Service = () => {
               <div className="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">
                 <button
                   type="submit"
-                  className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+                  className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-orange-500 rounded-lg focus:ring-4 focus:ring-orange-200 dark:focus:ring-orange-900 hover:bg-orange-800"
                 >
                   Post review
                 </button>
@@ -129,7 +140,7 @@ const Service = () => {
 
         {/* all reviews sections here */}
         <div className="all-reviews mb-20 mt-10">
-          <div className="main-review border-b">
+          <div className="main-review border-b border-gray-300">
             {/* user details */}
             <div className="user-details mb-4">
               <div className="main-details flex items-start gap-2">
@@ -143,8 +154,10 @@ const Service = () => {
                   <p>20.03.2022</p>
                 </div>
               </div>
-              <div className="main-review pl-12 font-general font-[500] mt-2">
-                <h1 className="font-general text-3xl font-[600] py-2 text-orange-500">5 <span className="text-gray-300 text-2xl">out of 5</span> </h1>
+              <div className="main-review sm:pl-12 font-general font-[500] mt-2">
+                <h1 className="font-general text-3xl font-[600] py-2 text-orange-500">
+                  5 <span className="text-gray-300 text-2xl">out of 5</span>{" "}
+                </h1>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Consequuntur maxime repellat a omnis facilis minima

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Card = () => {
   return (
     <div>
-      <div class=" bg-white rounded-lg border w-[20rem] h-[33rem]">
+      <div class=" bg-white rounded-lg border w-full h-full sm:w-[20rem] sm:h-[33rem] lg:w-[18rem] lg:h-[33rem] xl:w-[20rem] xl:h-[33rem]">
         <Link href="#">
           <img
             class="rounded-t-lg w-full"

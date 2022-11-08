@@ -6,7 +6,7 @@ const Myreviews = () => {
   UseTitle('Your Review')
   return (
     <div>
-      <div className="user-all-reviews lg:20 xl:px-40 py-20">
+      <div className="user-all-reviews lg:px-20 xl:px-40 py-20">
         <div class="overflow-x-auto relative border sm:rounded-lg">
           <table class="w-full text-sm text-left text-gray-500 font-general">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">

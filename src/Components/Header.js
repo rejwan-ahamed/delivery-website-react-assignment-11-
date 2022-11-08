@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div>
       <div className="main-nav-section border-b">
-        <Navbar fluid={true} rounded={true} className="md:mx-20 lg:mx-40">
+        <Navbar fluid={true} rounded={true} className="md:mx-20 lg:mx-20 xl:mx-40">
           <Navbar.Brand href="/">
             <img
               src="/assets/images/logo.svg"
@@ -19,7 +19,7 @@ const Header = () => {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="font-general font-[500] lg:pr-6">
-            <div className="main-collapse block lg:flex items-center justify-center gap-4">
+            <div className="main-collapse flex flex-col lg:flex-row lg:flex items-center justify-center gap-4">
               <Link to="/">Home</Link>
               <Link to="/services">Services</Link>
               <Link to="/blog">Blogs</Link>
