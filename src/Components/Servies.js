@@ -1,7 +1,9 @@
 import React from "react";
 import Card from "./Card";
+import UseTitle from "./Title";
 
 const Servies = () => {
+  UseTitle('All our services')
   return (
     <div>
       <h1 className="font-general text-4xl text-center font-[600] mt-24">Our All services.</h1>

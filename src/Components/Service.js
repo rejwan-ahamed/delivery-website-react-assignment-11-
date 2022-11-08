@@ -1,5 +1,7 @@
 import React from "react";
+import UseTitle from "./Title";
 const Service = () => {
+  UseTitle('Service')
   return (
     <div>
       <div className="course-main-part px-4 mt-20 mb-20 block lg:px-20 xl:px-40 lg:flex justify-center items-start lg:gap-10 ">

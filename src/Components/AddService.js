@@ -1,6 +1,8 @@
 import React from "react";
+import UseTitle from "./Title";
 
 const AddService = () => {
+  UseTitle('Add a new service')
   return (
     <div className="px-40 pb-20 pt-10">
       <h1 className="font-general text-center text-3xl font-[600] py-10">

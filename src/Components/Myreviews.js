@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import UseTitle from "./Title";
 
 const Myreviews = () => {
+  UseTitle('Your Review')
   return (
     <div>
       <div className="user-all-reviews lg:20 xl:px-40 py-20">

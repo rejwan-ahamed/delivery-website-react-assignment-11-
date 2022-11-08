@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import UseTitle from "../Title";
 
 const Login = () => {
+  UseTitle('Login now')
   return (
     <div>
       <div className="login-from-main flex justify-center items-center mt-20 px-4 mb-20">

@@ -1,6 +1,8 @@
 import React from "react";
+import UseTitle from "./Title";
 
 const EditComment = () => {
+  UseTitle("Edit your comment");
   return (
     <div className="px-40 py-20">
       <div className="upper-part-comment-section flex gap-4">
