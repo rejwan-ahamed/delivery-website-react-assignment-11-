@@ -41,7 +41,7 @@ const Myreviews = () => {
                 <td class="py-4 px-6 text-blue-600  font-[600]">
                   <Link>Edit</Link>
                 </td>
-                <td class="py-4 px-6 text-blue-600 font-[600]">
+                <td class="py-4 px-6 text-red-600 font-[600]">
                   <Link>Delete</Link>
                 </td>
               </tr>
