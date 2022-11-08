@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -19,13 +20,11 @@ const Header = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="font-general font-[500] lg:pr-6">
             <div className="main-collapse block lg:flex items-center justify-center gap-4">
-              <Navbar.Link href="/navbars" active={true}>
-                Home
-              </Navbar.Link>
-              <Navbar.Link href="/navbars">Services</Navbar.Link>
-              <Navbar.Link href="/navbars">Blogs</Navbar.Link>
-              <Navbar.Link href="/navbars">My review</Navbar.Link>
-              <Navbar.Link href="/navbars">Add service</Navbar.Link>
+              <Link to="/">Home</Link>
+              <Link to="/services">Services</Link>
+              <Link to="/blog">Blogs</Link>
+              <Link to="/reviews">My review</Link>
+              <Link to="/add">Add service</Link>
               <button
                 type="button"
                 className="text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 "

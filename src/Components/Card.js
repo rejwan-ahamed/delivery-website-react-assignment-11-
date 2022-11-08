@@ -28,7 +28,7 @@ const Card = () => {
             $450
           </h2>
           <Link
-            href="#"
+            to='/service'
             class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
           >
             View Details
