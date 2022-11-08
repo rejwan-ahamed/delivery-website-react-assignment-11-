@@ -1,13 +1,49 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/MainContext";
 import UseTitle from "../Title";
 
 const Register = () => {
-  UseTitle('Register')
+  const { userRegister, updateUserProfile } = useContext(AuthContext);
+  UseTitle("Register");
+  const registerFromSubmit = (e) => {
+    e.preventDefault();
+    const from = e.target;
+    const name = from.name.value;
+    const email = from.email.value;
+    const img = from.image.value;
+    const password = from.password.value;
+    const Cpassword = from.Cpassword.value;
+
+    if (password !== Cpassword) {
+      toast.error("Your Password and Confirm password dose not match");
+    } else {
+      userRegister(email, password)
+        .then((res) => {
+          UserProfile(name, img);
+          console.log(res);
+          toast.success("Your account has been created please login");
+          from.reset();
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
+    }
+  };
+
+  const UserProfile = (name, image) => {
+    const profile = {
+      displayName: name,
+      photoURL: image,
+    };
+    updateUserProfile(profile);
+  };
+
   return (
     <div>
       <div className="register-main flex justify-center items-center mt-20 px-4 mb-20">
-        <form className="w-[20rem] text-left">
+        <form className="w-[20rem] text-left" onSubmit={registerFromSubmit}>
           <div class="mb-6">
             <label
               for="email"

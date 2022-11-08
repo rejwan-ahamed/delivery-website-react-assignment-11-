@@ -10,6 +10,7 @@ import Service from "./Components/Service";
 import Myreviews from "./Components/Myreviews";
 import EditComment from "./Components/EditComment";
 import AddService from "./Components/AddService";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const router = createBrowserRouter([
@@ -32,6 +33,7 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={router}></RouterProvider>
+      <Toaster/>
     </div>
   );
 }
