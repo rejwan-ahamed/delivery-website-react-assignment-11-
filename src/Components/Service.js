@@ -30,8 +30,16 @@ const Service = () => {
       {/* comment section start here */}
       <div className="main-comment-area lg:px-20 xl:px-40">
         <div className="upper-part-comment-section flex gap-4">
-        <img class="w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"alt="Rounded avatar"/>
+          <img
+            class="w-10 h-10 rounded-full"
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            alt="Rounded avatar"
+          />
           <form className="w-full">
+          <div>
+            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Retting</label>
+            <input type="number" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mb-4 w-[20rem]" placeholder="1 to 5" required/>
+        </div>
             <div className="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
               <div className="py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800">
                 <label for="comment" className="sr-only">
@@ -114,6 +122,36 @@ const Service = () => {
               </div>
             </div>
           </form>
+        </div>
+
+        {/* all reviews sections here */}
+        <div className="all-reviews mb-20 mt-10">
+          <div className="main-review border-b">
+            {/* user details */}
+            <div className="user-details mb-4">
+              <div className="main-details flex items-start gap-2">
+                <img
+                  class="w-10 h-10 rounded-full"
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                  alt="Rounded avatar"
+                />
+                <div className="more-details font-general font-[500]">
+                  <h1>examle@gmail.com</h1>
+                  <p>20.03.2022</p>
+                </div>
+              </div>
+              <div className="main-review pl-12 font-general font-[500] mt-2">
+                <h1 className="font-general text-3xl font-[600] py-2 text-orange-500">5 <span className="text-gray-300 text-2xl">out of 5</span> </h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequuntur maxime repellat a omnis facilis minima
+                  voluptatibus, necessitatibus cupiditate ullam odit eveniet
+                  voluptas perferendis? Perspiciatis, explicabo veritatis. Quas
+                  repudiandae ullam illum.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
