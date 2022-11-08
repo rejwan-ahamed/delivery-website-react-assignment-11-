@@ -3,7 +3,7 @@ import React from "react";
 const Hero = () => {
   return (
     <div>
-      <div className="main-hero-section w-full flex justify-between md:px-20 lg:px-40">
+      <div className="main-hero-section w-full flex justify-between">
         <div className="hero-left w-1/2 text-left mt-40">
           <h1 className="font-general font-[600] text-4xl">
             Jonker express. 247 delivery.
