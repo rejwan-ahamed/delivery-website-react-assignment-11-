@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
+  console.warn(process.env.REACT_APP_appId)
   return (
     <div>
       <div className="main-hero-section w-full flex justify-between">
