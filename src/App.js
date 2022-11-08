@@ -11,6 +11,7 @@ import Myreviews from "./Components/Myreviews";
 import EditComment from "./Components/EditComment";
 import AddService from "./Components/AddService";
 import { Toaster } from "react-hot-toast";
+import Private from "./Private/Private";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,9 +25,9 @@ function App() {
         { path: "/register", element: <Register></Register> },
         { path: "/services", element: <Servies></Servies> },
         { path: "/service", element: <Service></Service> },
-        { path: "/reviews", element: <Myreviews></Myreviews> },
-        { path: "/edit", element: <EditComment></EditComment> },
-        { path: "/add", element: <AddService></AddService> },
+        { path: "/reviews", element: <Private><Myreviews></Myreviews></Private> },
+        { path: "/edit", element: <Private><EditComment></EditComment></Private> },
+        { path: "/add", element: <Private><AddService></AddService></Private> },
       ],
     },
   ]);

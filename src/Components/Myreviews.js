@@ -39,7 +39,7 @@ const Myreviews = () => {
                 <td class="py-4 px-6">Sliver</td>
                 <td class="py-4 px-6 font-[600] text-orange-500">Laptop</td>
                 <td class="py-4 px-6 text-blue-600  font-[600]">
-                  <Link>Edit</Link>
+                  <Link to='/edit'>Edit</Link>
                 </td>
                 <td class="py-4 px-6 text-red-600 font-[600]">
                   <Link>Delete</Link>
