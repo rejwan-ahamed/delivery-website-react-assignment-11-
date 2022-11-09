@@ -25,7 +25,13 @@ function App() {
         { path: "/blog", element: <Blog></Blog> },
         { path: "/login", element: <Login></Login> },
         { path: "/register", element: <Register></Register> },
-        { path: "/services", element: <Servies></Servies> },
+        {
+          path: "/services",
+          element: <Servies></Servies>,
+          loader: async () => {
+            return await fetch("http://localhost:5000/products/");
+          },
+        },
         {
           path: "/service/:id",
           element: <Service></Service>,

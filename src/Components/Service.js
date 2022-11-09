@@ -2,12 +2,47 @@ import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import UseTitle from "./Title";
 import { AuthContext } from "../Context/MainContext";
+import toast from "react-hot-toast";
+import moment from "moment/moment";
+
 const Service = () => {
   UseTitle("Service");
   window.scroll(0, 0);
-  const{user} = useContext(AuthContext)
-  const {image,name,description,price} = useLoaderData()
+  const { user } = useContext(AuthContext);
+  const { image, name, description, price, _id } = useLoaderData();
 
+  const rettingSubmit = (e) => {
+    e.preventDefault();
+    const from = e.target;
+    const getUserTime = moment().format("MMMM Do YYYY, h:mm:ss a");
+    const retting = from.retting.value;
+    const comment = from.comment.value;
+
+    console.log(retting, comment);
+    const userComment = {
+      userName: `${user.displayName}`,
+      email: `${user.email}`,
+      productID: `${_id}`,
+      retting: `${retting}`,
+      comment: `${comment}`,
+      time: `${getUserTime}`,
+    };
+    console.log(userComment);
+    fetch("http://localhost:5000/comments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userComment),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true) {
+          e.target.reset();
+          toast.success("Thank you for your feed back");
+        }
+      });
+  };
 
   return (
     <div>
@@ -24,9 +59,7 @@ const Service = () => {
         {/* course name */}
         <div className="course-right w-[100%] lg:w-[50%]">
           <h1 className="text-3xl font-general font-[600] mb-4">{name}</h1>
-          <p className="font-general font-medium mb-8">
-           {description}
-          </p>
+          <p className="font-general font-medium mb-8">{description}</p>
           <h1 className="font-general text-6xl font-[600] text-orange-500">
             ${price}
           </h1>
@@ -42,7 +75,7 @@ const Service = () => {
               src={user?.photoURL}
               alt="Rounded avatar"
             />
-            <form className="w-full">
+            <form className="w-full" onSubmit={rettingSubmit}>
               <div>
                 <label
                   for="first_name"
@@ -53,6 +86,7 @@ const Service = () => {
                 <input
                   type="number"
                   id="first_name"
+                  name="retting"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block p-2.5 mb-4 w-full sm:w-[20rem]"
                   placeholder="1 to 5"
                   required
@@ -64,6 +98,7 @@ const Service = () => {
                     Your comment
                   </label>
                   <textarea
+                    name="comment"
                     id="comment"
                     rows="4"
                     className="px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
