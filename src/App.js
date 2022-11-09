@@ -12,6 +12,7 @@ import EditComment from "./Components/EditComment";
 import AddService from "./Components/AddService";
 import { Toaster } from "react-hot-toast";
 import Private from "./Private/Private";
+import 'react-photo-view/dist/react-photo-view.css';
 
 function App() {
   const router = createBrowserRouter([
