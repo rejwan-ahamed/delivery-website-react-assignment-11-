@@ -1,18 +1,21 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import UseTitle from "./Title";
 import { AuthContext } from "../Context/MainContext";
 const Service = () => {
   UseTitle("Service");
   window.scroll(0, 0);
   const{user} = useContext(AuthContext)
+  const {image,name,description,price} = useLoaderData()
+
+
   return (
     <div>
       <div className="course-main-part px-4 mt-20 mb-20 block lg:px-20 xl:px-40 lg:flex justify-center items-start lg:gap-10 ">
         <div className="course-left w-full lg:w-[50%]">
           <img
             className="rounded-md mb-10 w-[100%] lg:w-[100%] lg:mb-0 "
-            src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+            src={image}
             alt=""
             srcset=""
           />
@@ -20,16 +23,12 @@ const Service = () => {
 
         {/* course name */}
         <div className="course-right w-[100%] lg:w-[50%]">
-          <h1 className="text-3xl font-general font-[600] mb-4">Test</h1>
+          <h1 className="text-3xl font-general font-[600] mb-4">{name}</h1>
           <p className="font-general font-medium mb-8">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
-            quidem rerum sapiente! Non eius iste doloremque similique libero
-            sequi voluptate atque nesciunt velit fugit. Dolor cupiditate optio
-            neque nostrum reprehenderit dolorem impedit. Accusamus enim tempore
-            deleniti molestias voluptatibus, vero veniam.
+           {description}
           </p>
           <h1 className="font-general text-6xl font-[600] text-orange-500">
-            $450
+            ${price}
           </h1>
         </div>
       </div>
@@ -40,7 +39,7 @@ const Service = () => {
           <div className="upper-part-comment-section block sm:flex gap-4">
             <img
               class="w-10 h-10 rounded-full"
-              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              src={user?.photoURL}
               alt="Rounded avatar"
             />
             <form className="w-full">
