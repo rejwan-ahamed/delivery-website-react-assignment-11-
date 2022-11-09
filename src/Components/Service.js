@@ -1,15 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import UseTitle from "./Title";
 import { AuthContext } from "../Context/MainContext";
 import toast from "react-hot-toast";
 import moment from "moment/moment";
+import Comment from "./Comment";
 
 const Service = () => {
   UseTitle("Service");
   window.scroll(0, 0);
   const { user } = useContext(AuthContext);
   const { image, name, description, price, _id } = useLoaderData();
+
+  const [comment, setComment] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/comment/${_id}`)
+      .then((res) => res.json())
+      .then((result) => setComment(result));
+  }, []);
+
+  console.log(comment);
 
   const rettingSubmit = (e) => {
     e.preventDefault();
@@ -18,16 +28,17 @@ const Service = () => {
     const retting = from.retting.value;
     const comment = from.comment.value;
 
-    console.log(retting, comment);
     const userComment = {
       userName: `${user.displayName}`,
       email: `${user.email}`,
+      image: `${user.photoURL}`,
       productID: `${_id}`,
       retting: `${retting}`,
       comment: `${comment}`,
       time: `${getUserTime}`,
+      serviceName: `${name}`,
     };
-    console.log(userComment);
+
     fetch("http://localhost:5000/comments", {
       method: "POST",
       headers: {
@@ -43,6 +54,8 @@ const Service = () => {
         }
       });
   };
+
+  console.log(comment);
 
   return (
     <div>
@@ -226,37 +239,16 @@ const Service = () => {
           </div>
         )}
 
+        {comment.length === 0 ? (
+          <h1 className="font-general font-[500] text-center py-6">
+            No review yet. Please leave a review.
+          </h1>
+        ) : undefined}
+
         {/* all reviews sections here */}
-        <div className="all-reviews mb-20 mt-10">
-          <div className="main-review border-b border-gray-300">
-            {/* user details */}
-            <div className="user-details mb-4">
-              <div className="main-details flex items-start gap-2">
-                <img
-                  class="w-10 h-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                  alt="Rounded avatar"
-                />
-                <div className="more-details font-general font-[500]">
-                  <h1>examle@gmail.com</h1>
-                  <p>20.03.2022</p>
-                </div>
-              </div>
-              <div className="main-review sm:pl-12 font-general font-[500] mt-2">
-                <h1 className="font-general text-3xl font-[600] py-2 text-orange-500">
-                  5 <span className="text-gray-300 text-2xl">out of 5</span>{" "}
-                </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequuntur maxime repellat a omnis facilis minima
-                  voluptatibus, necessitatibus cupiditate ullam odit eveniet
-                  voluptas perferendis? Perspiciatis, explicabo veritatis. Quas
-                  repudiandae ullam illum.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        {comment.map((data) => (
+          <Comment key={data._id} commentData={data}></Comment>
+        ))}
       </div>
     </div>
   );

@@ -1,9 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Context/MainContext";
+import TableData from "./TableData";
 import UseTitle from "./Title";
 
 const Myreviews = () => {
+  const { user } = useContext(AuthContext);
+  const[review,setReview] = useState([])
   UseTitle('Your Review')
+  useEffect(()=>{
+    fetch(`http://localhost:5000/userComment/${user.email}`)
+    .then(res=>res.json())
+    .then(result=>setReview(result))
+  },[])
+  console.log(review)
   return (
     <div>
       <div className="user-all-reviews lg:px-20 xl:px-40 py-20">
@@ -29,22 +38,7 @@ const Myreviews = () => {
               </tr>
             </thead>
             <tbody>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th
-                  scope="row"
-                  class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Apple MacBook Pro 17"
-                </th>
-                <td class="py-4 px-6">Sliver</td>
-                <td class="py-4 px-6 font-[600] text-orange-500">Laptop</td>
-                <td class="py-4 px-6 text-blue-600  font-[600]">
-                  <Link to='/edit'>Edit</Link>
-                </td>
-                <td class="py-4 px-6 text-red-600 font-[600]">
-                  <Link>Delete</Link>
-                </td>
-              </tr>
+             {review.map(data=><TableData key={data._id} datas={data}></TableData>)}
             </tbody>
           </table>
         </div>

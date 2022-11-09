@@ -28,7 +28,7 @@ const AddService = () => {
       description: `${description}`,
       time: `${getUserTime}`,
     };
-    console.log(productDetails);
+    // console.log(productDetails);
 
     fetch("http://localhost:5000/products", {
       method: "POST",
