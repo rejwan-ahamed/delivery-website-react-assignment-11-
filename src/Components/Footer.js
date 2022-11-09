@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div>
       <div className="main-footer-section font-general bg-black w-full block p-8 grid-cols-5 text-white md:px-20 sm:grid lg:px-20 xl:px-40  py-20 lg:grid-col-6 xl:grid-cols-5">
-        <h1 className="col-span-2 text-2xl font-[500] w-[100%] mb-8 sm:mb-0 sm:w-[60%] lg:col-span-1 xl:col-span-2">Jonker Express.<br></br>Enjoy 274 delivery.</h1>
+        <h1 className="col-span-2 text-2xl font-[500] w-[100%] mb-8 sm:mb-0 sm:w-[60%] sm:col-span-1 lg:col-span-1 xl:col-span-2">Jonker Express.<br></br>Enjoy 274 delivery.</h1>
         <div className="links flex flex-col gap-1 font-[500] mb-8 sm:mb-0 sm:w-[60%]">
           <Link>Home</Link>
           <Link>About</Link>

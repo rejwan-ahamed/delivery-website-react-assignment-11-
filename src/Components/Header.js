@@ -29,7 +29,7 @@ const Header = () => {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="font-general font-[500] lg:pr-6">
-            <div className="main-collapse flex flex-col lg:flex-row lg:flex items-center justify-center gap-4">
+            <div className="main-collapse flex flex-col sm:flex sm:flex-row lg:flex-row lg:flex items-center justify-center gap-4">
               <Link to="/">Home</Link>
               <Link to="/services">Services</Link>
               <Link to="/blog">Blogs</Link>

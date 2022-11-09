@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Card = () => {
   return (
     <div>
-      <div class=" bg-white rounded-lg border w-full h-full sm:w-[20rem] sm:h-[33rem] lg:w-[18rem] lg:h-[33rem] xl:w-[20rem] xl:h-[33rem]">
+      <div class=" bg-white rounded-lg border w-full h-full sm:w-[18rem] sm:h-[34rem] lg:w-[18rem] lg:h-[33rem] xl:w-[20rem] xl:h-[33rem]">
         <Link href="#">
           <PhotoProvider>
             <PhotoView src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">
