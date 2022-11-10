@@ -1,17 +1,53 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../Context/MainContext";
 import UseTitle from "./Title";
 
+
 const EditComment = () => {
-  UseTitle("Edit your comment");
+  UseTitle('edit comment')
+  const userData = useLoaderData();
+  const {user } = useContext(AuthContext);
+  const [users, setUser] = useState(userData);
+  console.log(user)
+  const fromSubmit = (e) => {
+
+    e.preventDefault();
+    console.log(user)
+    fetch(`http://localhost:5000/UserCommentUpdate/${userData[0]._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(users),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true) {
+          toast.success("data updated successfully");
+          e.target.reset();
+        }
+      });
+  };
+
+  const afterBlur = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    const newUser = { ...users };
+    newUser[name] = value;
+    setUser(newUser);
+  };
+
   return (
     <div className="main-comment-area px-6 lg:px-20 xl:px-40 my-20">
       <div className="upper-part-comment-section block sm:flex gap-4">
         <img
           class="w-10 h-10 rounded-full"
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          src={user.photoURL}
           alt="Rounded avatar"
         />
-        <form className="w-full">
+        <form className="w-full" onSubmit={fromSubmit}>
           <div>
             <label
               for="first_name"
@@ -20,6 +56,9 @@ const EditComment = () => {
               Retting
             </label>
             <input
+              onBlur={afterBlur}
+              defaultValue={userData[0].retting}
+              name='retting'
               type="number"
               id="first_name"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block p-2.5 mb-4 w-full sm:w-[20rem]"
@@ -33,11 +72,14 @@ const EditComment = () => {
                 Your comment
               </label>
               <textarea
+              name="comment"
+                onBlur={afterBlur}
+                defaultValue={userData[0].comment}
                 id="comment"
                 rows="4"
                 className="px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                 placeholder="Write a comment..."
-                required=""
+                required
               ></textarea>
             </div>
             <div className="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">

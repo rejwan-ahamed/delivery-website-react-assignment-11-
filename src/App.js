@@ -48,12 +48,15 @@ function App() {
           ),
         },
         {
-          path: "/edit",
+          path: "/edit/:id",
           element: (
             <Private>
               <EditComment></EditComment>
             </Private>
           ),
+          loader: async ({ params }) => {
+            return await fetch(`http://localhost:5000/userCommentID/${params.id}`);
+          },
         },
         {
           path: "/add",

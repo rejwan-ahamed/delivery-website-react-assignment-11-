@@ -1,7 +1,7 @@
 import React from "react";
 
 const Comment = ({commentData}) => {
-    const {image,email,retting,comment,time} = commentData
+    const {image,email,retting,comment,time,userName} = commentData
   return (
     <div>
       <div className="all-reviews mb-20 mt-10">
@@ -15,6 +15,7 @@ const Comment = ({commentData}) => {
                 alt="Rounded avatar"
               />
               <div className="more-details font-general font-[500]">
+                <p className="font-[600]">{userName}</p>
                 <h1>{email}</h1>
                 <p>{time}</p>
               </div>
