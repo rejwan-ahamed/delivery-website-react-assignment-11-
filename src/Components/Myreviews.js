@@ -8,7 +8,7 @@ const Myreviews = () => {
   const [review, setReview] = useState([]);
   UseTitle("Your Review");
   useEffect(() => {
-    fetch(`http://localhost:5000/userComment/${user.email}`)
+    fetch(`https://assignment-11-backend-rejwan-ahamed.vercel.app/userComment/${user.email}`)
       .then((res) => res.json())
       .then((result) => setReview(result));
   }, []);

@@ -30,7 +30,7 @@ const AddService = () => {
     };
     // console.log(productDetails);
 
-    fetch("http://localhost:5000/products", {
+    fetch("https://assignment-11-backend-rejwan-ahamed.vercel.app/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -9,13 +9,13 @@ const TableData = ({datas}) => {
 
 
    const deleteUser = (id) => {
-    fetch(`http://localhost:5000/user/comment/delete/${id}`, {
+    fetch(`https://assignment-11-backend-rejwan-ahamed.vercel.app/user/comment/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged === true) {
-          toast.success("data updated successfully");
+          toast.error("Data deleted");
         }
       });
     const remaining = users.filter((user) => user._id !== id);
@@ -30,7 +30,7 @@ const TableData = ({datas}) => {
                 >
                   {serviceName}
                 </th>
-                <td class="py-4 px-6">{comment.length>20? comment.slice(0,20)+'...': comment}</td>
+                <td class="py-4 px-6">{comment?.length>20? comment.slice(0,20)+'...': comment}</td>
                 <td class="py-4 px-6 font-[600] text-orange-500">{retting}</td>
                 <td class="py-4 px-6 text-blue-600  font-[600]">
                   <Link to={`/edit/${_id}`}>Edit</Link>

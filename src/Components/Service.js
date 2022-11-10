@@ -14,7 +14,7 @@ const Service = () => {
 
   const [comment, setComment] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/comment/${_id}`)
+    fetch(`https://assignment-11-backend-rejwan-ahamed.vercel.app/comment/${_id}`)
       .then((res) => res.json())
       .then((result) => setComment(result));
   }, []);
@@ -39,7 +39,7 @@ const Service = () => {
       serviceName: `${name}`,
     };
 
-    fetch("http://localhost:5000/comments", {
+    fetch("https://assignment-11-backend-rejwan-ahamed.vercel.app/comments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

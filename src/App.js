@@ -13,7 +13,7 @@ import AddService from "./Components/AddService";
 import { Toaster } from "react-hot-toast";
 import Private from "./Private/Private";
 import "react-photo-view/dist/react-photo-view.css";
-import { async } from "@firebase/util";
+import NotFound from "./Components/NotFound/NotFound"
 
 function App() {
   const router = createBrowserRouter([
@@ -29,14 +29,14 @@ function App() {
           path: "/services",
           element: <Servies></Servies>,
           loader: async () => {
-            return await fetch("http://localhost:5000/products/");
+            return await fetch("https://assignment-11-backend-rejwan-ahamed.vercel.app/products/");
           },
         },
         {
           path: "/service/:id",
           element: <Service></Service>,
           loader: async ({ params }) => {
-            return await fetch(`http://localhost:5000/products/${params.id}`);
+            return await fetch(`https://assignment-11-backend-rejwan-ahamed.vercel.app/products/${params.id}`);
           },
         },
         {
@@ -55,7 +55,7 @@ function App() {
             </Private>
           ),
           loader: async ({ params }) => {
-            return await fetch(`http://localhost:5000/userCommentID/${params.id}`);
+            return await fetch(`https://assignment-11-backend-rejwan-ahamed.vercel.app/userCommentID/${params.id}`);
           },
         },
         {
@@ -68,6 +68,7 @@ function App() {
         },
       ],
     },
+    {path:"*",element:<NotFound></NotFound>}
   ]);
   return (
     <div className="App">
