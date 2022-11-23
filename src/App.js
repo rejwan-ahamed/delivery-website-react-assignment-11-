@@ -29,14 +29,14 @@ function App() {
           path: "/services",
           element: <Servies></Servies>,
           loader: async () => {
-            return await fetch("https://assignment-11-backend-rejwan-ahamed.vercel.app/products/");
+            return await fetch("http://localhost:5000/products/");
           },
         },
         {
           path: "/service/:id",
           element: <Service></Service>,
           loader: async ({ params }) => {
-            return await fetch(`https://assignment-11-backend-rejwan-ahamed.vercel.app/products/${params.id}`);
+            return await fetch(`http://localhost:5000/products/${params.id}`);
           },
         },
         {
@@ -55,7 +55,7 @@ function App() {
             </Private>
           ),
           loader: async ({ params }) => {
-            return await fetch(`https://assignment-11-backend-rejwan-ahamed.vercel.app/userCommentID/${params.id}`);
+            return await fetch(`http://localhost:5000/userCommentID/${params.id}`);
           },
         },
         {

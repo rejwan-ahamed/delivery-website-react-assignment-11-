@@ -15,7 +15,7 @@ const EditComment = () => {
 
     e.preventDefault();
     console.log(user)
-    fetch(`https://assignment-11-backend-rejwan-ahamed.vercel.app/UserCommentUpdate/${userData[0]._id}`, {
+    fetch(`http://localhost:5000/UserCommentUpdate/${userData[0]._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

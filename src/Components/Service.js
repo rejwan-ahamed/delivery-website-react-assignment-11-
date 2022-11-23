@@ -5,16 +5,34 @@ import { AuthContext } from "../Context/MainContext";
 import toast from "react-hot-toast";
 import moment from "moment/moment";
 import Comment from "./Comment";
+import { useQuery } from "@tanstack/react-query";
 
 const Service = () => {
   UseTitle("Service");
   window.scroll(0, 0);
-  const { user,loader } = useContext(AuthContext);
+  const { user, loader } = useContext(AuthContext);
   const { image, name, description, price, _id } = useLoaderData();
 
   const [comment, setComment] = useState([]);
+
+  const { refetch } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () =>
+      fetch(`http://localhost:5000/comment/${_id}`, {
+        headers: {
+          authorization: "get all data",
+        },
+      })
+        .then((res) => res.json())
+        .then((result) => setComment(result)),
+  });
+
   useEffect(() => {
-    fetch(`https://assignment-11-backend-rejwan-ahamed.vercel.app/comment/${_id}`)
+    fetch(`http://localhost:5000/comment/${_id}`, {
+      headers: {
+        authorization: "get all data",
+      },
+    })
       .then((res) => res.json())
       .then((result) => setComment(result));
   }, []);
@@ -39,7 +57,7 @@ const Service = () => {
       serviceName: `${name}`,
     };
 
-    fetch("https://assignment-11-backend-rejwan-ahamed.vercel.app/comments", {
+    fetch("http://localhost:5000/comments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,6 +69,7 @@ const Service = () => {
         if (data.acknowledged === true) {
           e.target.reset();
           toast.success("Thank you for your feed back");
+          refetch()
         }
       });
   };

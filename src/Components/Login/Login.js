@@ -6,14 +6,12 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../Context/MainContext";
 
 const Login = () => {
-  UseTitle('Login now')
-  
+  UseTitle("Login now");
 
-  const { userSignIN, googleSignIN, githubSignIN } = useContext(AuthContext);
+  const { userSignIN, googleSignIN} = useContext(AuthContext);
   const provider = new GoogleAuthProvider();
-  const gitProvider = new GithubAuthProvider();
   const location = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const froms = location.state?.from?.pathname || "/";
   const loginFromSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +23,23 @@ const Login = () => {
     userSignIN(email, password)
       .then((res) => {
         console.log(res);
+        const UserData = {
+          email: res.user.email,
+        };
+        console.log(UserData)
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(UserData),
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            console.warn(result)
+            localStorage.setItem('token', result.token)
+          });
+
         from.reset();
         toast.success("You are successfully login");
         navigate(froms, { replace: true });
@@ -95,7 +110,7 @@ const Login = () => {
 
           <div className="button-group mt-8">
             <button
-             onClick={googleLoginButtonClicked}
+              onClick={googleLoginButtonClicked}
               type="button"
               class="text-white w-full bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
             >
@@ -116,8 +131,6 @@ const Login = () => {
               </svg>
               Sign in with Google
             </button>
-
-
           </div>
           {/* redirect to register button */}
           <Link

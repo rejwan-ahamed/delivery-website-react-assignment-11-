@@ -2,25 +2,11 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
-const TableData = ({datas}) => {
+const TableData = ({datas,deleteComment}) => {
    const {serviceName,retting,comment,_id} = datas
    const [users, setUsers] = useState([]);
    console.warn(users)
 
-
-   const deleteUser = (id) => {
-    fetch(`https://assignment-11-backend-rejwan-ahamed.vercel.app/user/comment/delete/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged === true) {
-          toast.error("Data deleted");
-        }
-      });
-    const remaining = users.filter((user) => user._id !== id);
-    setUsers(remaining);
-  };
     return (
       
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -36,7 +22,7 @@ const TableData = ({datas}) => {
                   <Link to={`/edit/${_id}`}>Edit</Link>
                 </td>
                 <td class="py-4 px-6 text-red-600 font-[600]">
-                <button onClick={() => deleteUser(datas._id)}>X</button>
+                <button onClick={() => deleteComment(datas._id)}>X</button>
                 </td>
               </tr>
         

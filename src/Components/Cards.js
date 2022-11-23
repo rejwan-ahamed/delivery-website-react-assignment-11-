@@ -5,7 +5,7 @@ import LimitCard from "./Limitcard/LimitCard";
 const Cards = () => {
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    fetch("https://assignment-11-backend-rejwan-ahamed.vercel.app/products/limit")
+    fetch("http://localhost:5000/products/limit")
       .then((res) => res.json())
       .then((result) => setProduct(result));
   }, []);
