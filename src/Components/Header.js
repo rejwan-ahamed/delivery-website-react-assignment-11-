@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/MainContext";
 
 const Header = () => {
   const { userLogout, user } = useContext(AuthContext);
-  console.warn(user)
+  console.warn(user);
   const userLogoutButtonClicked = () => {
     userLogout();
   };
@@ -60,9 +60,14 @@ const Header = () => {
                     Register
                   </Link>
                 </div>
-                
               )}
-             {user? <img class="w-10 h-10 rounded-full" src={user?.photoURL} alt="Rounded avatar"/>:undefined}
+              {user ? (
+                <img
+                  class="w-10 h-10 rounded-full"
+                  src={user?.photoURL}
+                  alt="Rounded avatar"
+                />
+              ) : undefined}
             </div>
           </Navbar.Collapse>
         </Navbar>
